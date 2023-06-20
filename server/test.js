@@ -1,14 +1,12 @@
-const express = require('express');
-const app = express();
-
-function metodo(par1, par2) {
-  try {
-    return par1 > par2
-  } catch (error) {
-    console.log(error);
-  }
+const axios = require('axios');
+const connectToURL = async(url)=>{
+    const outcome = axios.get(url);
+    let listOfEntries = (await outcome).data.entries;
+    listOfEntries.forEach((entry)=>{
+      console.log(entry.Category);
+    });
 }
 
-exports.metodo = metodo;
-
-console.log(metodo(6,2));
+console.log("Before connect URL");
+connectToURL('https://api.publicapis.org/entries');
+console.log("After connect URL");
