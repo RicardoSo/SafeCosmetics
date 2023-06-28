@@ -1,18 +1,18 @@
-const promise = new Promise( (resolve, reject) => {
+const myPromise = new Promise( (resolve, reject) => {
   setTimeout( () => {
     const aleatorio = Math.random();
-    if (aleatorio < 0.5) {
-      resolve('Done!');
+    if (aleatorio > 0.5) {
+      resolve('Promesa ejecutada correctamente');
     } else {
-      reject('Falló');
+      reject('Promesa falló');
     }
   }, 3000);
 })
 
-promise
-  .then( message => {
-    console.log(`Promesa resuelta, mensaje: ${message}`);
-})
-  .catch( error => {
-    console.log(`Promesa no cumplida: ${error}`);
+myPromise
+  .then( msg => {
+    console.log(`Paso por el then y obtuvo: ${msg}`);
+  })
+  .catch( err => {
+    console.log(`Paso por el catch y obtuvo: ${err}`);
   })
